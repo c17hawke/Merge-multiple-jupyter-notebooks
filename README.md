@@ -7,7 +7,10 @@ Kindly follow below steps -
 3. 	Now if you have copied py file then use following command in terminal
 
 	`python  mergeJupyterFiles.py`
-
+	<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/Screenshot%20from%202020-02-14%2000-58-08.png">
+	
 	[NOTE: make sure you are in the same location as this py file exists]
 	And in case you are using ipynb then you can directly run it in your jupyter notebook
 4. After completing step 4 you'l see a message of success and a baseFile.ipynb file will be created which is the merged file of all the files present in that folder
+
+	<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/Screenshot%20from%202020-02-14%2000-58-35.png">
