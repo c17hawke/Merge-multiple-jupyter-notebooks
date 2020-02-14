@@ -11,8 +11,13 @@ Kindly follow below steps -
 	<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/command.png">
 	
 	[NOTE: make sure you are in the same location as this py file exists]
+	
 	And in case you are using ipynb then you can directly run it in your jupyter notebook
 
 4. After completing step 4 you'll see a message of success and a baseFile.ipynb file will be created which is the merged file of all the files present inside a result folder 
 
 	<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/mergedNotebook.png">
+
+In case of none existence of notebook you'll get the following error. Hence one should make sure that your target notebooks are present at the same loaction. 
+
+	<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/error.png">
