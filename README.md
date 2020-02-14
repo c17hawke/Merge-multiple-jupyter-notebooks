@@ -18,6 +18,10 @@ This code is intended to merge multiple jupyter notebooks into one notebook. fin
 
 	<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/mergedNotebook.png">
 
-In case of none existence of notebook you'll get the following error. Hence one should make sure that your target notebooks are present at the same loaction. 
+## Common advise for the best results -
+1. In case of none existence of notebook you'll get the following error. Hence one should make sure that your target notebooks are present at the same loaction. 
 
 <img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/error.png">
+
+2. Make sure your notebooks contain ordered prefixes like file 01, file 02 etc in their names such that they can be arranged. This will help you to merge them serially. Some examples of file name are like -
+	* "Session 1.01 topicName", "Session 1.02 another topic Name"
