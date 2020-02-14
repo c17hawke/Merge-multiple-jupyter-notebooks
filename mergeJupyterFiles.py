@@ -8,32 +8,32 @@ import json
 import os
 
 def create_baseFile():
-	'''This creates a base file in which we merge all the files'''
-	baseData = '''{
-	"cells": [{"cell_type": "markdown", "metadata": {},
-	"source": ["# *Merged Jupyter Notebook*"]}],
-	
-	"metadata": {
-	"kernelspec": {
-	"display_name": "Python 3",
-	"language": "python",
-	"name": "python3"},
-	"language_info": {
-	"codemirror_mode": {"name": "ipython","version": 3},
-	"file_extension": ".py",
-	"mimetype": "text/x-python",
-	"name": "python",
-	"nbconvert_exporter": "python",
-	"pygments_lexer": "ipython3",
-	"version": "3.7.4"}
-	},
-	
-	"nbformat": 4,
-	"nbformat_minor": 2}'''
+    '''This creates a base file in which we merge all the files'''
+    baseData = '''{
+    "cells": [{"cell_type": "markdown", "metadata": {},
+    "source": ["# *Merged Jupyter Notebook*"]}],
+    
+    "metadata": {
+    "kernelspec": {
+    "display_name": "Python 3",
+    "language": "python",
+    "name": "python3"},
+    "language_info": {
+    "codemirror_mode": {"name": "ipython","version": 3},
+    "file_extension": ".py",
+    "mimetype": "text/x-python",
+    "name": "python",
+    "nbconvert_exporter": "python",
+    "pygments_lexer": "ipython3",
+    "version": "3.7.4"}
+    },
+    
+    "nbformat": 4,
+    "nbformat_minor": 2}'''
 
-	Filename = 'baseFile.ipynb'
-	with open(Filename,'w+') as f:
-	    f.write(baseData)
+    Filename = 'baseFile.ipynb'
+    with open(Filename,'w+') as f:
+        f.write(baseData)
 
 def read_file_as_json(Filename):
     with open(Filename,'r') as f:
@@ -68,37 +68,58 @@ def mergeAllJupyterFile(file=None):
     with open(Filename,'w+') as f:
             f.write(json.dumps(base_file))
 
-
+class CleanExit(Exception):
+    '''Only meant for clean System exit'''
+    def __init__(self):
+        print("Unsuccesful attempt, exiting program...")
+        
 def main():
-	# get the list of all the files
-	listOfFiles = os.listdir()
-	try:
-		'''works incase you are using in Jupyter notebook
-		then you need to remove the following files'''
-		listOfFiles.remove('.ipynb_checkpoints')
-		listOfFiles.remove('mainExperiment.ipynb')
-		listOfFiles.remove('mergeJupyterFiles.py')
-	except:
-		'''when you are running as a python script'''
-		listOfFiles.remove('mergeJupyterFiles.py')
+    # check if baseFile already exists. This will save you from
+    # merging files multiple times
+    if os.path.exists('baseFile.ipynb'):
+        warning = """WARNING: baseFile.ipynb already exists.
+It is advised to remove it first to avoid merging
+same files multiple times"""
+        print("*"*30)
+        print(warning)
+        print("*"*30)
+        def exit():
+            import sys
+            try:
+                sys.exit()
+            except:
+                raise CleanExit
+        proceed = input("continue anyway? [y / n]\n>> ")
+        if proceed in ['n', 'N']:
+            exit()
+        elif proceed in ['y', 'Y']:
+            print("proceeding...")
+        else:
+            print("wrong input hence -")
+            exit()
 
-	# sort the list 
-	listOfFiles.sort()
+    # get the list of all the files
+    listOfFiles = os.listdir()
 
-	# iterate over the list of files to merge them
-	for file in listOfFiles:
-		if ".ipynb" in file:
-			mergeAllJupyterFile(file)
+    # remove unwanted files from list of files
+    if '.ipynb_checkpoints' in listOfFiles:
+        listOfFiles.remove('.ipynb_checkpoints')
+    if "mergeJupyterFiles.ipynb" in listOfFiles:
+        listOfFiles.remove('mergeJupyterFiles.ipynb')
+    
+
+    # iterate over the list of files to merge them
+    for file in listOfFiles:
+        if ".ipynb" in file:
+            mergeAllJupyterFile(file)
 
         
 if __name__=="__main__":
-	try:
-		main()
-	except Exception as e:
-		print(e)
-		contact_statement = "\n** Please contact the author at sunny.c17hawke@gmail.com **\n"
-		print("#"*len(contact_statement))
-		print(contact_statement)
-		print("#"*len(contact_statement))
-	else:
-		print("\n** your file is ready by name baseFile.ipynb **")	
+    try:
+        main()
+        print("\n## Attempt Successfull!! ##")
+        print("\n## Your file is ready by name baseFile.ipynb ##")
+    except Exception as e:
+        print(e)
+    finally:
+        print("\n## For any feedbacks mail-to: <sunny.c17hawke@gmail.com> ##\n")
