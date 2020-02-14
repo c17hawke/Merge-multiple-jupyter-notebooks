@@ -20,4 +20,4 @@ Kindly follow below steps -
 
 In case of none existence of notebook you'll get the following error. Hence one should make sure that your target notebooks are present at the same loaction. 
 
-	<img src="https://github.com/c17hawke/Merge-multiple-jupyter-notebooks/blob/master/screeenshots/error.png?raw=true">
+<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/error.png">
