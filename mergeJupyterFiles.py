@@ -91,8 +91,28 @@ def create_base_for_results():
 the following location ##\n{move_to_path}")
     
     move_file_sub_log_dir()
-        
-        
+
+class CleanExit(Exception):
+    '''Protects program from stopping abruptly'''
+    def __init__(self):
+        print("\n## No jupyter notebooks found to merge ##")
+        print("\nexiting program....")
+
+
+def safelyExit():
+    '''safely exit when target notebooks are not present'''
+    import sys
+    try:
+        sys.exit()
+    except:
+        raise CleanExit
+
+def is_target_notebooks_exists(listOfFiles):
+    for file in listOfFiles:
+        if ".ipynb" in file:
+            return True
+    return False
+
 def main():
 	# get the list of all the files
     listOfFiles = os.listdir()
@@ -102,8 +122,11 @@ def main():
         listOfFiles.remove('.ipynb_checkpoints')
     if "mergeJupyterFiles.ipynb" in listOfFiles:
         listOfFiles.remove('mergeJupyterFiles.ipynb')
-    
-
+            
+    # check the existence of taget notebook files
+    if not is_target_notebooks_exists(listOfFiles):
+    	safelyExit()
+    	
 	# iterate over the list of files to merge them
     listOfFiles.sort()
     for file in listOfFiles:
