@@ -8,7 +8,7 @@ Kindly follow below steps -
 
 	`python  mergeJupyterFiles.py`
 
-	<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/command.png">
+	<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/mergedNotebook.png">
 	
 	[NOTE: make sure you are in the same location as this py file exists]
 	And in case you are using ipynb then you can directly run it in your jupyter notebook
