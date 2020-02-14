@@ -1,7 +1,7 @@
 # Merge-multiple-jupyter-notebooks
 This code is intended to merge multiple jupyter notebooks into one notebook. final notebook will also contain the parent file names
 
-Kindly follow below steps -
+## Kindly follow below instructions -
 1. Download mergeJupyterFiles.py or mergeJupyterFiles.ipynb
 2. Now place this downloaded.py file or ipynb file into a folder containing other jupyer notebooks
 3. 	Now if you have copied .py file then use following command in terminal
