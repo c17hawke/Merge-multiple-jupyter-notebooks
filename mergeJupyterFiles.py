@@ -8,32 +8,31 @@ import json
 import os
 
 def create_baseFile():
-    '''This creates a base file in which we merge all the files'''
-    baseData = '''{
-    "cells": [{"cell_type": "markdown", "metadata": {},
-    "source": ["# *Merged Jupyter Notebook*"]}],
-    
-    "metadata": {
-    "kernelspec": {
-    "display_name": "Python 3",
-    "language": "python",
-    "name": "python3"},
-    "language_info": {
-    "codemirror_mode": {"name": "ipython","version": 3},
-    "file_extension": ".py",
-    "mimetype": "text/x-python",
-    "name": "python",
-    "nbconvert_exporter": "python",
-    "pygments_lexer": "ipython3",
-    "version": "3.7.4"}
-    },
-    
-    "nbformat": 4,
-    "nbformat_minor": 2}'''
+	'''This creates a base file in which we merge all the files'''
+	baseData = '''{
+	"cells": [{"cell_type": "markdown", "metadata": {},
+	"source": ["# *Merged Jupyter Notebook*"]}],
+	"metadata": {
+	"kernelspec": {
+	"display_name": "Python 3",
+	"language": "python",
+	"name": "python3"},
+	"language_info": {
+	"codemirror_mode": {"name": "ipython","version": 3},
+	"file_extension": ".py",
+	"mimetype": "text/x-python",
+	"name": "python",
+	"nbconvert_exporter": "python",
+	"pygments_lexer": "ipython3",
+	"version": "3.7.4"}
+	},
+	
+	"nbformat": 4,
+	"nbformat_minor": 2}'''
 
-    Filename = 'baseFile.ipynb'
-    with open(Filename,'w+') as f:
-        f.write(baseData)
+	Filename = 'baseFile.ipynb'
+	with open(Filename,'w+') as f:
+	    f.write(baseData)
 
 def read_file_as_json(Filename):
     with open(Filename,'r') as f:
@@ -67,38 +66,35 @@ def mergeAllJupyterFile(file=None):
     Filename = 'baseFile.ipynb'
     with open(Filename,'w+') as f:
             f.write(json.dumps(base_file))
+        
+def create_base_for_results():
+    '''This moves the merged file to log folder created for it'''
+    # path to root log directory 
+    root_logDir = os.path.join(os.curdir, "results_folder")
 
-class CleanExit(Exception):
-    '''Only meant for clean System exit'''
-    def __init__(self):
-        print("Unsuccesful attempt, exiting program...")
+    def move_file_sub_log_dir():
+        '''This moves the baseFile to sub log directory'''
+        # generate run id based on current time
+        import time
+        run_id = time.strftime("mergedFile_%Y_%m_%d-%H_%M_%S")
+        
+        # path to move baseFile
+        move_to_path = os.path.join(root_logDir, run_id)
+        if not os.path.isdir(move_to_path):
+            os.makedirs(move_to_path)
+        base_file = 'baseFile.ipynb'
+        
+        # finally move baseFile
+        import shutil
+        shutil.move(base_file, move_to_path)
+        print(f"\n## Access merged file at \
+the following location ##\n{move_to_path}")
+    
+    move_file_sub_log_dir()
+        
         
 def main():
-    # check if baseFile already exists. This will save you from
-    # merging files multiple times
-    if os.path.exists('baseFile.ipynb'):
-        warning = """WARNING: baseFile.ipynb already exists.
-It is advised to remove it first to avoid merging
-same files multiple times"""
-        print("*"*30)
-        print(warning)
-        print("*"*30)
-        def exit():
-            import sys
-            try:
-                sys.exit()
-            except:
-                raise CleanExit
-        proceed = input("continue anyway? [y / n]\n>> ")
-        if proceed in ['n', 'N']:
-            exit()
-        elif proceed in ['y', 'Y']:
-            print("proceeding...")
-        else:
-            print("wrong input hence -")
-            exit()
-
-    # get the list of all the files
+	# get the list of all the files
     listOfFiles = os.listdir()
 
     # remove unwanted files from list of files
@@ -108,18 +104,18 @@ same files multiple times"""
         listOfFiles.remove('mergeJupyterFiles.ipynb')
     
 
-    # iterate over the list of files to merge them
+	# iterate over the list of files to merge them
+    listOfFiles.sort()
     for file in listOfFiles:
         if ".ipynb" in file:
             mergeAllJupyterFile(file)
-
+    create_base_for_results()
         
 if __name__=="__main__":
     try:
         main()
         print("\n## Attempt Successfull!! ##")
-        print("\n## Your file is ready by name baseFile.ipynb ##")
     except Exception as e:
         print(e)
     finally:
-        print("\n## For any feedbacks mail-to: <sunny.c17hawke@gmail.com> ##\n")
+        print("## For any feedbacks mail-to: <sunny.c17hawke@gmail.com> ##\n")
