@@ -19,7 +19,7 @@ This code is intended to merge multiple jupyter notebooks into one notebook. fin
 <img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/mergedNotebook.png">
 
 ## Common advise for the best results -
->**1.** In case of none existence of notebook you'll get the following error. Hence one should make sure that your target notebooks are present at the same loaction. 
+>**1.** In case of non existence of notebook you'll get the following error. Hence one should make sure that your target notebooks are present at the same loaction. 
 
 <img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/error.png">
 
