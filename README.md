@@ -16,9 +16,12 @@ This code is intended to merge multiple jupyter notebooks into one notebook. fin
 	
 	And in case you are using ipynb then you can directly run it in your jupyter notebook
 
+
 **4.** After completing step 4 you'll see a message of success and a baseFile.ipynb file will be created which is the merged file of all the files present inside a result folder 
 
 <img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/mergedNotebook.png" align="middle">
+
+<hr>
 
 ## Common advise for the best results -
 **1.** In case of non existence of notebook you'll get the following error. Hence one should make sure that your target notebooks are present at the same loaction. 
