@@ -10,7 +10,7 @@ This code is intended to merge multiple jupyter notebooks into one notebook. fin
 
 					`python  mergeJupyterFiles.py`
 
-<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/command.png">
+<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/command.png" align="middle">
 	
 	[NOTE: make sure you are in the same location as this py file exists]
 	
@@ -18,12 +18,12 @@ This code is intended to merge multiple jupyter notebooks into one notebook. fin
 
 **4.** After completing step 4 you'll see a message of success and a baseFile.ipynb file will be created which is the merged file of all the files present inside a result folder 
 
-<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/mergedNotebook.png">
+<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/mergedNotebook.png" align="middle">
 
 ## Common advise for the best results -
 **1.** In case of non existence of notebook you'll get the following error. Hence one should make sure that your target notebooks are present at the same loaction. 
 
-<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/error.png">
+<img src="https://raw.githubusercontent.com/c17hawke/Merge-multiple-jupyter-notebooks/master/screeenshots/error.png" align="middle">
 
 **2.** Make sure your notebooks contain ordered prefixes like file 01, file 02 etc in their names such that they can be arranged. This will help you to merge them serially. Some examples of file name are like -
 	* "Session 1.01 topicName", "Session 1.02 another topic Name"
