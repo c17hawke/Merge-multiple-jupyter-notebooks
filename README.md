@@ -25,4 +25,3 @@ This code is intended to merge multiple jupyter notebooks into one notebook. fin
 
 >**2.** Make sure your notebooks contain ordered prefixes like file 01, file 02 etc in their names such that they can be arranged. This will help you to merge them serially. Some examples of file name are like -
 	* "Session 1.01 topicName", "Session 1.02 another topic Name"
-- <img src="https://latex.codecogs.com/png.latex?O_t=\sum a + b " /> 
